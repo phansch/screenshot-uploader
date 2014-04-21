@@ -1,4 +1,3 @@
-require 'net/http'
 require 'filewatcher'
 
 class Uploader
