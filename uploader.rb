@@ -1,4 +1,6 @@
 require 'filewatcher'
+require 'dotenv'
+Dotenv.load
 
 class Uploader
   DESTINATION = 'http://localhost:9292/screenshot/'
@@ -17,7 +19,7 @@ class Uploader
     end
 
     def upload(filename)
-      `curl -v -F "data=@#{filename}"  #{DESTINATION + filename} -u #{ENV['USER']}:#{ENV['PASS']}`
+      `curl -v -F "data=@#{filename}"  #{DESTINATION + filename} -u #{ENV['LOGIN']}:#{ENV['PASS']}`
     end
 end
 
