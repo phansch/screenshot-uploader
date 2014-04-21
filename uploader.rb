@@ -3,7 +3,6 @@ require 'dotenv'
 Dotenv.load
 
 class Uploader
-  DESTINATION = 'http://localhost:9292/screenshot/'
 
   def watch
     FileWatcher.new(['*.jpg', '*.png']).watch(20) do |filename, event|
@@ -19,7 +18,7 @@ class Uploader
     end
 
     def upload(filename)
-      `curl -v -F "data=@#{filename}"  #{DESTINATION + filename} -u #{ENV['LOGIN']}:#{ENV['PASS']}`
+      `curl -v -F "data=@#{filename}"  #{ENV['DESTINATION'] + filename} -u #{ENV['LOGIN']}:#{ENV['PASS']}`
     end
 end
 
